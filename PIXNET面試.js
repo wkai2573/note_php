@@ -16,7 +16,7 @@ let map3 =
 `0000Y100
 0C011100`;
 
-let a = solution(map3);
+let a = solution(map);
 a
 
 
@@ -43,7 +43,7 @@ function solution(rawMap) {
 	}
 	// animalPos
 
-	// return 兩位置最短距離(map, xy(animalPos['C']), xy(animalPos['X'])); //!
+	// return getShortDistance(map, xy(animalPos['C']), xy(animalPos['Z'])); //!
 
 	//3. 遞迴算出貓鼠各自最短距離
 	let short = {}; //['CX':1, 'CY':2]
@@ -142,19 +142,19 @@ function getShortDistance(map, sPos, tPos, 步數=0, savedPos=[]) {
 	//往上下左右
 	let paths = [];
 	if (上!=='1' && !isContain(savedPos, 上pos)) {
-		let d = getShortDistance(map, 上pos, tPos, 步數+1, savedPos);
+		let d = getShortDistance(map, 上pos, tPos, 步數+1, savedPos.slice(0));
 		paths.push(d);
 	}
 	if (下!=='1' && !isContain(savedPos, 下pos)) {
-		let d = getShortDistance(map, 下pos, tPos, 步數+1, savedPos);
+		let d = getShortDistance(map, 下pos, tPos, 步數+1, savedPos.slice(0));
 		paths.push(d);
 	}
 	if (左!=='1' && !isContain(savedPos, 左pos)) {
-		let d = getShortDistance(map, 左pos, tPos, 步數+1, savedPos);
+		let d = getShortDistance(map, 左pos, tPos, 步數+1, savedPos.slice(0));
 		paths.push(d);
 	}
 	if (右!=='1' && !isContain(savedPos, 右pos)) {
-		let d = getShortDistance(map, 右pos, tPos, 步數+1, savedPos);
+		let d = getShortDistance(map, 右pos, tPos, 步數+1, savedPos.slice(0));
 		paths.push(d);
 	}
 
